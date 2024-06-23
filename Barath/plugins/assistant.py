@@ -35,10 +35,8 @@ async def start(_, message):
          return await message.reply("[`DON'T SPAM HERE`]")
      SPAM.append(user_id)
      await message.forward(config.GROUP_ID)
-     mention = f"[{name}](tg://user?id={id})"
-     BUTTON=InlineKeyboardMarkup([[
-     InlineKeyboardButton("SOURCE 👾", url=config.SOURCE),]])
-     await message.reply_text(text=strings.BOT_START.format(mention=mention, applive=applive, botlive=botlive),quote=True, reply_markup=BUTTON ,parse_mode=enums.ParseMode.MARKDOWN)
+     mention = f"[{name}](tg://user?id={id})"     
+     await message.reply_text(text=strings.BOT_START.format(mention=mention, applive=applive, botlive=botlive), quote=True, parse_mode=enums.ParseMode.MARKDOWN)
      await asyncio.sleep(20)
      SPAM.remove(user_id)
      return 
