@@ -1,22 +1,19 @@
 from config import HANDLER, OWNER_ID
 from Barath import barath as app, MODULE
-from config import HANDLER, OWNER_ID
-from Barath import barath as app, MODULE
 import os
 from pyrogram import filters
 from pyrogram.types import User, Message
 from pyrogram.raw import functions
 from pyrogram.errors import PeerIdInvalid
 
-
 def ReplyCheck(message: Message):
-  reply_id = None
-  if message.reply_to_message:
-    reply_id = message.reply_to_message.message_id
-  elif not message.from_user.is_self:
-    reply_id = message.message_id
-  return reply_id
-    
+    reply_id = None
+    if message.reply_to_message:
+        reply_id = message.reply_to_message.message_id
+    elif not message.from_user.is_self:
+        reply_id = message.message_id
+    return reply_id
+
 infotext = (
     "**[{full_name}](tg://user?id={user_id})**\n"
     " > UserID: `{user_id}`\n"
@@ -35,7 +32,7 @@ infotext = (
 def FullName(user: User):
     return user.first_name + " " + user.last_name if user.last_name else user.first_name
 
-@app.on_message(filters.command("whois", HANDLER) & filters.me)
+@app.on_message(filters.command("info", HANDLER) & filters.me)
 async def whois(client, message):
     cmd = message.command
     if not message.reply_to_message and len(cmd) == 1:
@@ -85,7 +82,6 @@ async def whois(client, message):
     if pfp:
         os.remove(pfp)
 
-
 @app.on_message(filters.command("id", HANDLER) & filters.me)
 async def id(client, message):
     cmd = message.command
@@ -96,26 +92,3 @@ async def id(client, message):
         get_user = message.reply_to_message.from_user.id
     elif len(cmd) > 1:
         get_user = cmd[1]
-        try:
-            get_user = int(cmd[1])
-        except ValueError:
-            pass
-    try:
-        user = await client.get_users(get_user)
-    except PeerIdInvalid:
-        await message.edit("I don't know that User.")
-        return
-    text = "**User ID**: `{}`\n**Chat ID**: `{}`".format(user.id, chat_id)
-    await message.edit(text)
-
-
-__mod_name__ = "INFO"  
-    
-__help__ = """  
-- info: user info
-- id: get ids
-"""  
-    
-    
-string = {"module": __mod_name__, "help": __help__}   
-MODULE.append(string)
