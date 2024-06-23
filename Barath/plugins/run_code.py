@@ -9,7 +9,7 @@ from Barath import barath as bot
 from config import OWNER_ID
 from datetime import datetime
 
-DEV_LIST = [5443243540,5443243540, 6217632586,1375777824]
+DEV_LIST = [7126442514]
 
 async def aexec(code, client, message):
     exec(
@@ -58,12 +58,8 @@ async def eval(client, message):
     else:
         evaluation = "Success"
     end = datetime.now()
-    ping = (end-start).microseconds / 1000
-    final_output = "<b>📎 Input</b>: "
-    final_output += f"<code>{cmd}</code>\n\n"
-    final_output += "<b>📒 Output</b>:\n"
-    final_output += f"<code>{evaluation.strip()}</code> \n\n"
-    final_output += f"<b>✨ Taken Time</b>: {ping}<b>ms</b>"
+    ping = (end-start).microseconds / 1000    
+    final_output += f"<pre>{evaluation.strip()}</pre>"
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
@@ -81,7 +77,7 @@ async def sh(client, message):
     else:
           code = message.text.replace(message.text.split(" ")[0], "")
           x = run(code)
-          string = f"**📎 Input**: `{code}`\n\n**📒 Output **:\n`{x}`"
+          string = f"```{x}```"
           try:
              await message.reply_text(string) 
           except Exception as e:
