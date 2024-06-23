@@ -91,18 +91,18 @@ async def id(client, message):
     elif len(cmd) == 1:
         get_user = message.reply_to_message.from_user.id
     elif len(cmd) > 1:
-        get_user = cmd[1]	        get_user = cmd[1]
-        try:	
-            get_user = int(cmd[1])	
-        except ValueError:	
-            pass	
-    try:	
-        user = await client.get_users(get_user)	
-    except PeerIdInvalid:	
-        await message.edit("I don't know that User.")	
-        return	
-    text = "**User ID**: `{}`\n**Chat ID**: `{}`".format(user.id, chat_id)	
-    await message.edit(text)	
+        get_user = cmd[1]
+        try:
+            get_user = int(cmd[1])
+        except ValueError:
+            pass
+    try:
+        user = await client.get_users(get_user)
+    except PeerIdInvalid:
+        await message.edit("I don't know that User.")
+        return
+    text = "**User ID**: `{}`\n**Chat ID**: `{}`".format(user.id, chat_id)
+    await message.edit(text)
 
 
 __mod_name__ = "INFO"  	
