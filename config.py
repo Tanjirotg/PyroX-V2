@@ -1,6 +1,6 @@
 import os
 
-OWNER_ID = os.getenv("OWNER_ID",7126442514)
+OWNER_ID = 7126442514
 HANDLER = ["~", ".","!","?","@","$"]
 BARATH = "https://telegra.ph/file/7c7798ec581d32dd4db93.jpg"
 GROUP_ID = os.getenv("GROUP_ID", "-1002119409366")
