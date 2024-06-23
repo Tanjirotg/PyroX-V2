@@ -1,8 +1,8 @@
 import os
 
-OWNER_ID = os.getenv("OWNER_ID",1238234357)
+OWNER_ID = os.getenv("OWNER_ID",7126442514)
 HANDLER = ["~", ".","!","?","@","$"]
-BARATH = "https://te.legra.ph/file/6a839cecad51014a32254.mp4"
+BARATH = "https://telegra.ph/file/7c7798ec581d32dd4db93.jpg"
 GROUP_ID = os.getenv("GROUP_ID", "-1002119409366")
 SOURCE = "https://github.com/SIAmKira/PyroX-V2"
 LOG_CHAT = -1002119409366
